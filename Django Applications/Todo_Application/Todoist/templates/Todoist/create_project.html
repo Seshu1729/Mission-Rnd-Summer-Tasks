@@ -1,0 +1,18 @@
+{% extends "Todoist/header.html" %}
+{% block content %}
+    <script>
+        function create_project()
+        {
+            project_name = $("#project_name").val()
+
+        }
+    </script>
+    <form onsubmit="create_project()" id="create_project_form" class="form-horizontal">
+        <div class="control-group">
+            <label class="control-label" for="project_name_label">Project_name</label>
+            <div class="controls">
+                <input type="text" placeholder="Project Name" id="project_name"/>
+            </div>
+        </div>
+    </form>
+{% endblock %}

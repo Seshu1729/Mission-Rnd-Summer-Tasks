@@ -1,0 +1,8 @@
+{% extends "Todoist/header.html" %}
+{% block content %}
+    <ul class="list-group">
+        {% for project in projects_list %}
+            <li class="list-group-item"><a href="{{ project.id }}/">{{ project.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

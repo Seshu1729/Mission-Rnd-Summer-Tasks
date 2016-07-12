@@ -1,0 +1,8 @@
+{% extends "Todoist/header.html" %}
+{% block content %}
+    <ul class="list-group">
+        {% for target in targets_list %}
+            <li class="list-group-item">{{ target.name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

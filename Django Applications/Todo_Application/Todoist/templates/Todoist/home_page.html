@@ -1,0 +1,78 @@
+{% extends "Todoist/header.html" %}
+{% block content %}
+    <script>
+        function create_project()
+        {
+            var project_name = $("#project_name").val();
+            alert(project_name);
+            var new_project = $.ajax({
+                                    url:"/profile_page/create_project/",
+                                    data:"project_name="+project_name,
+                                    success: function(project_id)
+                                    {
+                                        alert("succuss");
+                                        $("#create_project_form")[0].reset();
+                                    },
+                                    failure: function()
+                                    {
+                                        alert("failure");
+                                    }
+                                });
+        }
+    </script>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">TODOIST</a>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar-main">
+                    <div class="navbar-form navbar-right">
+                        <button type="submit" class="btn btn-warning">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="modal-body row">
+        <div class="col-sm-3">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+                <li role="presentation" class="active"><a href="#projects" aria-controls="home" role="tab" data-toggle="tab">Projects</a></li>
+                <li role="presentation"><a href="#tags" aria-controls="tags" role="tab" data-toggle="tab">Tags</a></li>
+                <li role="presentation"><a href="#filters" aria-controls="filters" role="tab" data-toggle="tab">Filters</a></li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="projects">
+
+                    <form method="GET" onsubmit="create_project()" id="create_project_form" class="form-horizontal">
+                        <div class="control-group">
+                            <div class="controls">
+                                <input type="text" placeholder="Project Name" id="project_name"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="controls">
+                                <button class="btn btn-success" id="create_project_button">Create Project</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div role="tabpanel" class="tab-pane" id="tags">
+                    Under Devolopment
+                </div>
+                <div role="tabpanel" class="tab-pane" id="filters">
+                    Under Devolopment
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            query result
+        </div>
+    </div>
+{% endblock %}
